@@ -10,19 +10,21 @@ class ApiController < ApplicationController
         if @user.save
           # Success Message
           print "Sucess!"
-          render :json => { :status => :ok, :message => "Success!"}
+          render :json => { :status => :ok, :message => "Success!", :description => "Unable to save"}
         else
           # Fail-Save Error
           print "Fail!"
-          render :json => { :status => :ok, :message => "Fail!"}
+          render :json => { :status => :ok, :message => "Fail!", :description => "Unable to save"}
         end
       else
         # Wrong Type Error
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
         print "Wrong Type!"
         
       end
     else
       # Missing Attribute Error
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
       print "Missing Attribute!"
     end
   end
@@ -34,9 +36,11 @@ class ApiController < ApplicationController
         render :json => @user
       else
         print "Wrong Type"
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
       end
     else
       print "Missing Attribute"
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
     end
   end
 end
