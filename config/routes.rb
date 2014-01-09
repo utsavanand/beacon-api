@@ -1,7 +1,8 @@
 BeaconApi::Application.routes.draw do
   match "api/addUser" => "api#addUser", via: [:get, :post]
   match "api/getUser" => "api#getUser", via: [:get, :post]
-    
+  match "api/getDataForBeacon" => "api#getDataForBeacon", via: [:get, :post]    
+      
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109154741) do
+ActiveRecord::Schema.define(version: 20140109162121) do
 
   create_table "beacons", force: true do |t|
     t.string   "uid"
@@ -27,7 +27,10 @@ ActiveRecord::Schema.define(version: 20140109154741) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "beacon_id"
   end
+
+  add_index "items", ["beacon_id"], name: "index_items_on_beacon_id"
 
   create_table "notes", force: true do |t|
     t.string   "title"

@@ -43,4 +43,16 @@ class ApiController < ApplicationController
       render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
     end
   end
+  
+  def getDataForBeacon
+    if params[:type].present? && params[:beacon_uid].present?
+      if params[:type]=="getDataForBeacon"
+        @item = Item.where(:beacon_id => Beacon.where(:uid => params[:beacon_uid]))
+      else
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
+      end
+    else
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
+    end
+  end
 end
