@@ -10,7 +10,7 @@ class ApiController < ApplicationController
         if @user.save
           # Success Message
           print "Sucess!"
-          render :json => { :status => :ok, :message => "Success!", :description => "Unable to save"}
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
         else
           # Fail-Save Error
           print "Fail!"
