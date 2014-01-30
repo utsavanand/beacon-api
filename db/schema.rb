@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129105717) do
+ActiveRecord::Schema.define(version: 20140130084133) do
 
   create_table "beacons", force: true do |t|
     t.string   "uid"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140129105717) do
     t.datetime "updated_at"
     t.string   "fb_token"
     t.string   "fb_id"
-    t.date     "token_expiry"
+    t.datetime "token_expiry"
   end
 
 end
