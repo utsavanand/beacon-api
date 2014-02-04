@@ -38,9 +38,9 @@ class ApiController < ApplicationController
   # To get all user details
   
   def getUser #GET
-    if params[:type].present? && params[:userid].present?
+    if params[:type].present?
       if params[:type]=="getUser"
-        @user = User.find(params[:userid])
+        @user = User.all
         render :json => @user
       else
         print "Wrong Type"
