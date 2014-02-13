@@ -1,0 +1,21 @@
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<title>TEST</title>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=412143015572370";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+Testing activitiy feed integraton using JS SDK </br>
+<b>This is the Like Button</b></br>
+<fb:like href="https://developers.facebook.com/docs/plugins/" layout="standard" action="like" show_faces="true" share="true"></fb:like>
+<br/>
+<b>This is the activity feed</b><br/>
+<fb:activity app_id="190708057699757" site="www.thehindu.com" action="likes, recommends" colorscheme="light" header="true"></fb:activity>
+</body>
+</html>

@@ -1,3 +1,3 @@
 class Beacon < ActiveRecord::Base
-  has_one :item
+  has_many :items
 end

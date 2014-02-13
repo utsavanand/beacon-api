@@ -1,7 +1,99 @@
 class ApiController < ApplicationController
   
-  #To add a new user
+  #To add a new beacon
+  def addBeacon
+    if params[:type].present? && params[:beacon_uid].present?
+      if params[:type]=="addBeacon"
+        @beacon = Beacon.new
+        @beacon.uid = params[:beacon_uid]
+        if @beacon.save
+          # Success Message
+          print "Sucess!"
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
+        else
+          # Fail-Save Error
+          print "Fail!"
+          render :json => { :status => :ok, :message => "Fail!", :description => "Unable to save"}
+        end
+      else
+        # Wrong Type Error
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
+        print "Wrong Type!"
+        
+      end
+    else
+      # Missing Attribute Error
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
+      print "Missing Attribute!"
+    end
+  end
   
+  #To add an item to a beacon
+  def addBeaconItem
+    if params[:type].present? && params[:beacon_id].present? && params[:item_name].present? && params[:item_image].present? && params[:item_description].present? && params[:item_template].present? && params[:item_category].present?
+       if params[:type]=="addBeaconItem"
+        @beacon = Beacon.find(params[:beacon_id])
+        @item = Item.new
+        @item.name = params[:item_name]
+        @item.image = params[:item_image]
+        @item.description = params[:item_description]
+        @item.template = params[:item_template]
+        @item.category = params[:item_category]
+        @item.beacon = @beacon
+        if @item.save
+          # Success Message
+          print "Sucess!"
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
+        else
+          # Fail-Save Error
+          print "Fail!"
+          render :json => { :status => :ok, :message => "Fail!", :description => "Unable to save"}
+        end
+      else
+        # Wrong Type Error
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
+        print "Wrong Type!"
+      end
+    else
+      # Missing Attribute Error
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
+      print "Missing Attribute!"
+    end
+  end
+  
+  #To add an item to a beacon
+  def addBeaconItemNote
+    if params[:type].present? && params[:item_id].present? && params[:note_title].present? && params[:note_type].present? && params[:note_image].present? && params[:note_thumbnail].present?
+       if params[:type]=="addBeaconItemNote"
+         @item = Item.find(params[:item_id])
+         @note = Note.new
+         @note.title = params[:note_title]
+         @note.noteType = params[:note_type]
+         @note.image = params[:note_image]
+         @note.thumbnail_image = params[:note_thumbnail]
+         @note.item = @item
+        if @note.save
+          # Success Message
+          print "Sucess!"
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
+        else
+          # Fail-Save Error
+          print "Fail!"
+          render :json => { :status => :ok, :message => "Fail!", :description => "Unable to save"}
+        end
+      else
+        # Wrong Type Error
+        render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
+        print "Wrong Type!"
+      end
+    else
+      # Missing Attribute Error
+      render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
+      print "Missing Attribute!"
+    end
+  end
+  
+  #To add a new user
   def addUser #POST
     if params[:type].present? && params[:name].present? && params[:email].present? && params[:dob].present? 
       if params[:type]=="addUser"
@@ -93,4 +185,8 @@ class ApiController < ApplicationController
       render :json => { :status => :ok, :message => "Fail!", :description => "Missing Attribute"}
     end
   end
+  
+  def test
+  end
+  
 end
