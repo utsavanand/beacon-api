@@ -63,7 +63,7 @@ class ApiController < ApplicationController
   
   #To add an item to a beacon
   def addBeaconItemNote
-    if params[:type].present? && params[:item_id].present? && params[:note_title].present? && params[:note_type].present? && params[:note_image].present? && params[:note_thumbnail].present? && params[:note_summary].present?
+    if params[:type].present? && params[:item_id].present? && params[:note_title].present? && params[:note_type].present? && params[:note_image].present? && params[:note_thumbnail].present? && params[:note_summary].present? && params[:note_description].present?
        if params[:type]=="addBeaconItemNote"
          @item = Item.find(params[:item_id])
          @note = Note.new
@@ -71,6 +71,7 @@ class ApiController < ApplicationController
          @note.noteType = params[:note_type]
          @note.image = params[:note_image]
          @note.summary = params[:note_summary]
+         @note.description = params[:note_description]
          @note.thumbnail_image = params[:note_thumbnail]
          @note.item = @item
         if @note.save
