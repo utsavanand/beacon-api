@@ -9,7 +9,7 @@ class ApiController < ApplicationController
         if @beacon.save
           # Success Message
           print "Sucess!"
-          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved", :withBeaconID => @beacon.id}
         else
           # Fail-Save Error
           print "Fail!"
@@ -43,7 +43,7 @@ class ApiController < ApplicationController
         if @item.save
           # Success Message
           print "Sucess!"
-          render :json => { :status => :ok, :message => "Success!", :description => "Saved"}
+          render :json => { :status => :ok, :message => "Success!", :description => "Saved", :withItemID => @item.id}
         else
           # Fail-Save Error
           print "Fail!"
