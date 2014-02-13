@@ -1,5 +1,5 @@
 class AddThumbnailImageToNotes < ActiveRecord::Migration
   def change
-    add_column :notes, :summary, :string
+    add_column :notes, :thumbnail_image, :string
   end
 end

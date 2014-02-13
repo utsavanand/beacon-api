@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207050446) do
+ActiveRecord::Schema.define(version: 20140213090834) do
 
   create_table "beacons", force: true do |t|
     t.string   "uid"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20140207050446) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "item_id"
-    t.string   "thumbnail_image"
   end
 
   add_index "notes", ["item_id"], name: "index_notes_on_item_id"
