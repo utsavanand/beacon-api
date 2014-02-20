@@ -151,8 +151,11 @@ class ApiController < ApplicationController
     if params[:type].present? && params[:beacon_uid].present?
       if params[:type]=="getDataForBeacon"
         @item = Item.where(:beacon_id => Beacon.where(:uid => params[:beacon_uid]))
-        if @item.count < 0
+        if (@item.count) < 0
           render :json => { :status => :ok, :message => "Fail!", :description => "Beacon Not Found"}
+        else
+          render :json => @item
+        end
       else
         render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
       end
