@@ -61,7 +61,7 @@ class ApiController < ApplicationController
     end
   end
   
-  #To add an item to a beacon
+  #To add a note to an item
   def addBeaconItemNote
     if params[:type].present? && params[:item_id].present? && params[:note_title].present? && params[:note_type].present? && params[:note_image].present? && params[:note_thumbnail].present? && params[:note_summary].present? && params[:note_description].present?
        if params[:type]=="addBeaconItemNote"
@@ -130,7 +130,6 @@ class ApiController < ApplicationController
   end
   
   # To get all user details
-  
   def getUser #GET
     if params[:type].present?
       if params[:type]=="getUser"
@@ -152,6 +151,8 @@ class ApiController < ApplicationController
     if params[:type].present? && params[:beacon_uid].present?
       if params[:type]=="getDataForBeacon"
         @item = Item.where(:beacon_id => Beacon.where(:uid => params[:beacon_uid]))
+        if @item.count < 0
+          render :json => { :status => :ok, :message => "Fail!", :description => "Beacon Not Found"}
       else
         render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
       end
