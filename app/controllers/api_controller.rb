@@ -154,7 +154,6 @@ class ApiController < ApplicationController
         if (@item.count) < 0
           render :json => { :status => :ok, :message => "Fail!", :description => "Beacon Not Found"}
         else
-          render :json => @item
         end
       else
         render :json => { :status => :ok, :message => "Fail!", :description => "Wrong Type"}
