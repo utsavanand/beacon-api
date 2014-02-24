@@ -1,4 +1,6 @@
 BeaconApi::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   match "api/addUser" => "api#addUser", via: [:get, :post]
   match "api/addBeacon" => "api#addBeacon", via: [:get, :post]
   match "api/addBeaconItem" => "api#addBeaconItem", via: [:get, :post]
